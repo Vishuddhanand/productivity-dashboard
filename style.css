@@ -1,8 +1,8 @@
 :root {
     --pri: #fff;
     --sec: #111;
-    --tri1: brown;
-    --tri2: rgb(237, 175, 105);
+    --tri1: rgba(255, 87, 87, 0.611);
+    --tri2: rgb(40, 38, 37);
 }
 
 
@@ -26,7 +26,7 @@ body {
 
 }
 
-.allElems {
+section.allElems {
     height: 100%;
     width: 100%;
     background-color: var(--sec);
@@ -34,6 +34,7 @@ body {
     flex-wrap: wrap;
     gap: 25px;
     padding: 10px 20px;
+    position: absolute;
 }
 
 .elem {
@@ -42,31 +43,116 @@ body {
     background-color: var(--tri2);
     position: relative;
     transition: all ease 0.2s;
+    cursor: pointer;
 }
 
-.elem:active{
+.elem:active {
     scale: 0.97;
 }
 
-.elem img{
+.elem img {
     height: 100%;
     width: 100%;
-   
+
 }
 
-.elem h2{
+.elem h2 {
     position: absolute;
     bottom: 3%;
     right: 5%;
 }
 
-.fullElem{
+.fullElem {
     height: 100%;
     width: 100%;
     background-color: var(--sec);
     display: none;
+    position: absolute;
+    padding: 10px 20px;
 }
 
-.fullElem h2{
-    font-size: 60px;
+.fullElem h2 {
+    font-size: 30px;
+    padding-block: 10px;
+
 }
+
+.back {
+    border: 1px solid var(--pri);
+    outline: none;
+    padding: 5px 15px;
+    font-weight: 600;
+    background-color: black;
+    position: absolute;
+    right: 2%;
+    top: 3%;
+    cursor: pointer;
+}
+
+.back:active {
+    scale: 0.97;
+}
+
+.todo-list-full-page .todo-container {
+    height: 70%;
+    width: 100%;
+
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.todo-list-full-page .todo-container .addTask {
+    width: 33%;
+    height: 100%;
+    background-color: var(--tri2);
+    border-radius: 10px;
+}
+
+.todo-list-full-page .todo-container .allTasks {
+    width: 65%;
+    height: 100%;
+    background-color: var(--tri2);
+    border-radius: 10px;
+}
+
+.todo-list-full-page .todo-container .addTask form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 40px 20px;
+
+}
+
+.todo-list-full-page .todo-container .addTask form input,
+.todo-list-full-page .todo-container .addTask form textarea {
+    padding: 20px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    color: var(--sec);
+    font-size: 20px;
+
+}
+
+.todo-list-full-page .todo-container .addTask form textarea{
+    resize: vertical;
+    max-height: 290px;
+    min-height: 70px;
+}
+
+.todo-list-full-page .todo-container .addTask form .add-task-btn{
+    font-size: 15px;
+    padding: 10px 20px;
+    font-weight: 600;
+    background-color: green;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+}
+
+.todo-container .addTask form .add-task-btn:active{
+    scale: 0.97;
+}
+
