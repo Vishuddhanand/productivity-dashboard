@@ -69,6 +69,7 @@ section.allElems {
     display: none;
     position: absolute;
     padding: 10px 20px;
+    overflow: hidden;
 }
 
 .fullElem h2 {
@@ -96,7 +97,6 @@ section.allElems {
 .todo-list-full-page .todo-container {
     height: 70%;
     width: 100%;
-
     margin-top: 30px;
     display: flex;
     align-items: center;
@@ -136,13 +136,13 @@ section.allElems {
 
 }
 
-.todo-list-full-page .todo-container .addTask form textarea{
+.todo-list-full-page .todo-container .addTask form textarea {
     resize: vertical;
-    max-height: 290px;
-    min-height: 70px;
+    max-height: 250px;
+    min-height: 200px;
 }
 
-.todo-list-full-page .todo-container .addTask form .add-task-btn{
+.todo-list-full-page .todo-container .addTask form .add-task-btn {
     font-size: 15px;
     padding: 10px 20px;
     font-weight: 600;
@@ -152,7 +152,72 @@ section.allElems {
     outline: none;
 }
 
-.todo-container .addTask form .add-task-btn:active{
+.todo-container .addTask form .add-task-btn:active {
     scale: 0.97;
 }
 
+
+.allTasks {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px;
+    overflow: auto;
+}
+
+.task {
+    background: #f4f4f4;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: 0.3s ease;
+
+}
+
+.task:hover {
+    transform: translateY(-3px);
+}
+
+.task-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.task-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--sec);
+}
+
+.important-tag.true {
+    background: red;
+    color: white;
+    padding: 3px 8px;
+    font-size: 12px;
+    border-radius: 20px;
+}
+
+.important-tag.false {
+    display: none;
+}
+
+.task-desc {
+    margin: 10px 0;
+    font-size: 14px;
+    color: #555;
+}
+
+.task-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.complete-btn {
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    background: green;
+    color: white;
+}
