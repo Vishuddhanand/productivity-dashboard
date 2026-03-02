@@ -221,3 +221,39 @@ section.allElems {
     background: green;
     color: white;
 }
+
+
+.daily-planner-full-page{
+    display: block;
+}
+
+.daily-planner-full-page .day-planner{
+    background-color: var(--tri2);
+    width: 100%;
+    height: 80%;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    overflow: auto;
+    margin-top: 20px;
+}
+
+.day-planner .day-planner-time{
+    background-color: var(--tri1);
+    padding: 10px;
+    width: 49%;
+}
+
+.day-planner .day-planner-time p{
+    margin-bottom: 5px;
+}
+
+.day-planner .day-planner-time input{
+    padding: 5px;
+    width: 90%;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    color: var(--sec);
+}
