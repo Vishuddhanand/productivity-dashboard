@@ -31,37 +31,21 @@ let checkBox = document.querySelector('.addTask form #check')
 
 let allTasks = document.querySelector('.allTasks')
 
+let currentTasks = []
 
 
+if (localStorage.getItem('currentTasks')) {
+    currentTasks = JSON.parse(localStorage.getItem('currentTasks'))
+} else {
+    console.log("Task list is empty")
+}
 
-let currentTasks = [
-    {
-        task: "test tak 1",
-        description: "test descriptionn 1",
-        imp: false
-    },
-    {
-        task: "test tak 1",
-        description: "test descriptionn 1",
-        imp: true
-    },
-    {
-        task: "test tak 1",
-        description: "test descriptionn 1",
-        imp: true
-    },
-    {
-        task: "test tak 1",
-        description: "test descriptionn 1",
-        imp: true
-    },
-
-]
 
 function renderTasks() {
+
     let sum = ''
 
-    currentTasks.forEach(function (elem) {
+    currentTasks.forEach(function (elem, idx) {
         sum += `        <div class="task">
                         <div class="task-top">
                             <h3 class="task-title">${elem.task}</h3>
@@ -73,12 +57,30 @@ function renderTasks() {
                         </p>
 
                         <div class="task-actions">
-                            <button class="complete-btn">Task Completed</button>
+                            <button class="complete-btn" id=${idx}>Mark as Completed</button>
                         </div>
                     </div>`
     })
 
     allTasks.innerHTML = sum
+
+    localStorage.setItem('currentTasks', JSON.stringify(currentTasks))
+
+
+    let markTaskCompletedButton = document.querySelectorAll('.complete-btn')
+
+    markTaskCompletedButton.forEach(function (btn) {
+
+        btn.addEventListener('click', function () {
+
+            currentTasks.splice(btn.id, 1)
+
+            renderTasks();
+
+        })
+
+
+    })
 }
 
 renderTasks()
@@ -90,7 +92,18 @@ form.addEventListener('submit', function (e) {
     // console.log(checkBox.checked)
 
     currentTasks.push({ task: formInput.value, description: formDescriptionInput.value, imp: checkBox.checked })
+
+
+
+    formInput.value = ''
+    formDescriptionInput.value = ''
+    checkBox.checked = false
+
     renderTasks()
+
 })
+
+
+
 
 
