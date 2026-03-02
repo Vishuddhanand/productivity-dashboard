@@ -108,38 +108,61 @@ function todoList() {
 
 todoList()
 
-let hours = Array.from({ length: 18 }, (_, idx) => `${6 + idx}:00 - ${7 + idx}:00`)
+function dailyPlanner() {
+    let hours = Array.from({ length: 18 }, (_, idx) => `${6 + idx}:00 - ${7 + idx}:00`)
 
-var dayPlanner = document.querySelector('.day-planner')
+    var dayPlanner = document.querySelector('.day-planner')
 
 
 
-var dayPlanData = JSON.parse(localStorage.getItem('dayPlanData')) || {}
+    var dayPlanData = JSON.parse(localStorage.getItem('dayPlanData')) || {}
 
-let dailyHours = ''
+    let dailyHours = ''
 
-hours.forEach(function (elem, idx) {
-    var savedData = dayPlanData[idx] || ''
-    dailyHours += ` <div class="day-planner-time">
+    hours.forEach(function (elem, idx) {
+        var savedData = dayPlanData[idx] || ''
+        dailyHours += ` <div class="day-planner-time">
     <p>${elem}</p>
     <input type="text" placeholder="..." id=${idx} value = ${savedData}>
     </div>`
-})
-
-dayPlanner.innerHTML = dailyHours
-
-
-var dayPlannerInput = document.querySelectorAll('.day-planner input')
-
-dayPlannerInput.forEach(function (elem, idx) {
-    elem.addEventListener("input", function () {
-
-        dayPlanData[elem.id] = elem.value
-
-
-        localStorage.setItem('dayPlanData', JSON.stringify(dayPlanData))
-        console.log(dayPlanData)
     })
 
-})
+    dayPlanner.innerHTML = dailyHours
+
+
+    var dayPlannerInput = document.querySelectorAll('.day-planner input')
+
+    dayPlannerInput.forEach(function (elem, idx) {
+        elem.addEventListener("input", function () {
+
+            dayPlanData[elem.id] = elem.value
+
+
+            localStorage.setItem('dayPlanData', JSON.stringify(dayPlanData))
+            console.log(dayPlanData)
+        })
+
+    })
+}
+
+dailyPlanner()
+
+function motivationalQuotes() {
+    var quoteContent = document.querySelector('.quote-text')
+    var quoteAuthor = document.querySelector('.quote-author')
+
+    async function fetchQuote() {
+        let response = await fetch("https://dummyjson.com/quotes/random")
+        let data = await response.json()
+
+        quoteContent.innerHTML = `“${data.quote}”`
+        quoteAuthor.innerHTML = `— ${data.author}`
+
+
+    }
+
+    fetchQuote()
+}
+
+motivationalQuotes()
 
