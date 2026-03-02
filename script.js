@@ -34,19 +34,20 @@ let allTasks = document.querySelector('.allTasks')
 let currentTasks = []
 
 
-if (localStorage.getItem('currentTasks')) {
-    currentTasks = JSON.parse(localStorage.getItem('currentTasks'))
-} else {
-    console.log("Task list is empty")
-}
+function todoList() {
+    if (localStorage.getItem('currentTasks')) {
+        currentTasks = JSON.parse(localStorage.getItem('currentTasks'))
+    } else {
+        console.log("Task list is empty")
+    }
 
 
-function renderTasks() {
+    function renderTasks() {
 
-    let sum = ''
+        let sum = ''
 
-    currentTasks.forEach(function (elem, idx) {
-        sum += `        <div class="task">
+        currentTasks.forEach(function (elem, idx) {
+            sum += `        <div class="task">
                         <div class="task-top">
                             <h3 class="task-title">${elem.task}</h3>
                             <span class="important-tag ${elem.imp}">important</span>
@@ -60,48 +61,52 @@ function renderTasks() {
                             <button class="complete-btn" id=${idx}>Mark as Completed</button>
                         </div>
                     </div>`
-    })
-
-    allTasks.innerHTML = sum
-
-    localStorage.setItem('currentTasks', JSON.stringify(currentTasks))
-
-
-    let markTaskCompletedButton = document.querySelectorAll('.complete-btn')
-
-    markTaskCompletedButton.forEach(function (btn) {
-
-        btn.addEventListener('click', function () {
-
-            currentTasks.splice(btn.id, 1)
-
-            renderTasks();
-
         })
 
+        allTasks.innerHTML = sum
 
-    })
-}
-
-renderTasks()
-
-form.addEventListener('submit', function (e) {
-    e.preventDefault()
-
-    // console.log(formInput.value , formDescriptionInput.value)
-    // console.log(checkBox.checked)
-
-    currentTasks.push({ task: formInput.value, description: formDescriptionInput.value, imp: checkBox.checked })
+        localStorage.setItem('currentTasks', JSON.stringify(currentTasks))
 
 
+        let markTaskCompletedButton = document.querySelectorAll('.complete-btn')
 
-    formInput.value = ''
-    formDescriptionInput.value = ''
-    checkBox.checked = false
+        markTaskCompletedButton.forEach(function (btn) {
+
+            btn.addEventListener('click', function () {
+
+                currentTasks.splice(btn.id, 1)
+
+                renderTasks();
+
+            })
+
+
+        })
+    }
 
     renderTasks()
 
-})
+    form.addEventListener('submit', function (e) {
+        e.preventDefault()
+
+        // console.log(formInput.value , formDescriptionInput.value)
+        // console.log(checkBox.checked)
+
+        currentTasks.push({ task: formInput.value, description: formDescriptionInput.value, imp: checkBox.checked })
+
+
+
+        formInput.value = ''
+        formDescriptionInput.value = ''
+        checkBox.checked = false
+
+        renderTasks()
+
+    })
+
+}
+
+todoList()
 
 
 
