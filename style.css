@@ -294,3 +294,49 @@ section.allElems {
     font-weight: 600;
     color: #555;
 }
+
+.pomodoro-full-page {
+    display: block;
+}
+
+
+.pomodoro-container {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    min-width: 40%;
+    background-color: var(--tri1);
+    padding: 30px;
+}
+
+
+.pomodoro-container .timer-time {
+    font-size: 80px;
+    font-weight: 700;
+    font-family: monospace;
+}
+
+.btn-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    transition: all ease 0.2s;
+}
+
+.btn-container button {
+    padding: 5px 15px;
+    margin-top: 15px;
+    color: var(--sec);
+    font-size: 20px;
+    font-weight: 600;
+    border: none;
+    outline: none;
+
+}
+
+.btn-container button:active {
+    scale: 0.97;
+}

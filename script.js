@@ -166,3 +166,49 @@ function motivationalQuotes() {
 
 motivationalQuotes()
 
+
+let totalSeconds = 25 * 60
+
+let timerTime = document.querySelector('.timer-time')
+let timerStartBtn = document.querySelector('.start-btn')
+let timerPausetBtn = document.querySelector('.pause-btn')
+let timerResetBtn = document.querySelector('.reset-btn')
+
+let timerInterval = null
+
+function updateTimer() {
+    let minutes = Math.floor(totalSeconds / 60)
+    let seconds = totalSeconds % 60
+
+    timerTime.innerHTML = `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`
+
+}
+
+
+updateTimer()
+
+function startTimer() {
+    clearInterval(timerInterval)
+    timerInterval = setInterval(() => {
+        totalSeconds--
+        updateTimer()
+    }, 1000);
+
+}
+
+function pauseTimer() {
+    clearInterval(timerInterval)
+
+}
+
+function resetTimer() {
+    totalSeconds = 25 * 60
+    clearInterval(timerInterval)
+    updateTimer()
+}
+
+timerStartBtn.addEventListener('click', startTimer)
+
+timerPausetBtn.addEventListener('click', pauseTimer)
+
+timerResetBtn.addEventListener('click', resetTimer)
