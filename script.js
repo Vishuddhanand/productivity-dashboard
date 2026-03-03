@@ -167,48 +167,83 @@ function motivationalQuotes() {
 motivationalQuotes()
 
 
-let totalSeconds = 25 * 60
+function pomodoroTimer() {
+    let totalSeconds = 25 * 60
 
-let timerTime = document.querySelector('.timer-time')
-let timerStartBtn = document.querySelector('.start-btn')
-let timerPausetBtn = document.querySelector('.pause-btn')
-let timerResetBtn = document.querySelector('.reset-btn')
+    let timerTime = document.querySelector('.timer-time')
+    let timerStartBtn = document.querySelector('.start-btn')
+    let timerPausetBtn = document.querySelector('.pause-btn')
+    let timerResetBtn = document.querySelector('.reset-btn')
+    let session = document.querySelector('.pomodoro-session')
 
-let timerInterval = null
+    let timerInterval = null
 
-function updateTimer() {
-    let minutes = Math.floor(totalSeconds / 60)
-    let seconds = totalSeconds % 60
+    function updateTimer() {
+        let minutes = Math.floor(totalSeconds / 60)
+        let seconds = totalSeconds % 60
 
-    timerTime.innerHTML = `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`
+        timerTime.innerHTML = `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`
 
-}
+    }
 
-
-updateTimer()
-
-function startTimer() {
-    clearInterval(timerInterval)
-    timerInterval = setInterval(() => {
-        totalSeconds--
-        updateTimer()
-    }, 1000);
-
-}
-
-function pauseTimer() {
-    clearInterval(timerInterval)
-
-}
-
-function resetTimer() {
-    totalSeconds = 25 * 60
-    clearInterval(timerInterval)
     updateTimer()
+
+
+    let isWorkSession = true
+
+    function startTimer() {
+
+        clearInterval(timerInterval)
+
+        timerInterval = setInterval(() => {
+
+            if (totalSeconds > 0) {
+
+                totalSeconds--
+                updateTimer()
+
+            } else {
+
+                clearInterval(timerInterval)
+
+                if (isWorkSession) {
+
+                    isWorkSession = false
+                    totalSeconds = 5 * 60
+                    session.innerHTML = 'Take a Break'
+
+                } else {
+
+                    isWorkSession = true;
+                    totalSeconds = 25 * 60;
+                    session.innerHTML = 'Work Session'
+
+                }
+
+                updateTimer();
+            }
+
+        }, 1000);
+    }
+
+    function pauseTimer() {
+        clearInterval(timerInterval)
+
+    }
+
+    function resetTimer() {
+        totalSeconds = 25 * 60
+        clearInterval(timerInterval)
+        updateTimer()
+        session.innerHTML = 'Work Session'
+    }
+
+    timerStartBtn.addEventListener('click', startTimer)
+
+    timerPausetBtn.addEventListener('click', pauseTimer)
+
+    timerResetBtn.addEventListener('click', resetTimer)
 }
 
-timerStartBtn.addEventListener('click', startTimer)
+pomodoroTimer()
 
-timerPausetBtn.addEventListener('click', pauseTimer)
-
-timerResetBtn.addEventListener('click', resetTimer)
