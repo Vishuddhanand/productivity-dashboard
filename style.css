@@ -30,11 +30,64 @@ section.allElems {
     height: 100%;
     width: 100%;
     background-color: var(--sec);
+    padding: 10px 20px;
+    position: absolute;
+}
+
+.allElems header {
+    height: 350px;
+    width: 100%;
+    background-image: url('https://images.unsplash.com/photo-1717361281130-f10a587180a2?q=80&w=1169&auto=format&fit=crop');
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    padding: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+}
+
+.header1 h1 {
+    font-size: 80px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.header1 h2 {
+    font-size: 40px;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+.header1 h4 {
+    font-size: 40px;
+    font-weight: 400;
+}
+
+.header2 h2 {
+    font-size: 48px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.header2 h3 {
+    font-size: 16px;
+    font-weight: 400;
+    margin: 4px 0;
+}
+
+.header2 h4 {
+    font-size: 20px;
+    font-weight: 500;
+    margin-top: 6px;
+}
+
+.allElems .allFeatures {
     display: flex;
     flex-wrap: wrap;
     gap: 25px;
-    padding: 10px 20px;
-    position: absolute;
+
 }
 
 .elem {

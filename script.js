@@ -247,3 +247,28 @@ function pomodoroTimer() {
 
 pomodoroTimer()
 
+
+async function weatherAPICall(){
+
+    var apiKey = '1b7e61b2a2774d9b820174805260303'
+    var city = 'Pune'
+
+    let response = await fetch(`http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}`)
+
+    let data = await response.json()
+    console.log(data.current.humidity)
+    console.log(data.current.wind_kph)
+    console.log(data.current.precip_in)
+    console.log(data.current.temp_c)
+    console.log(data.current.condition.text)
+    console.log(data.location.name)
+}
+
+weatherAPICall()
+
+function DateTime(){
+    let date = new Date()
+    console.log(date.getHours())
+}
+
+DateTime()
