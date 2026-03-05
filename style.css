@@ -87,11 +87,15 @@ section.allElems {
     display: flex;
     flex-wrap: wrap;
     gap: 25px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 25px;
 
 }
 
+
 .elem {
-    height: 320px;
+    height: 355px;
     width: 275px;
     background-color: var(--tri2);
     position: relative;
