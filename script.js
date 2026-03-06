@@ -248,14 +248,17 @@ function pomodoroTimer() {
 pomodoroTimer()
 
 
-async function weatherAPICall(){
+
+
+
+async function weatherAPICall() {
 
     var apiKey = '1b7e61b2a2774d9b820174805260303'
     var city = 'Pune'
 
     let response = await fetch(`http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}`)
-
     let data = await response.json()
+
     console.log(data.current.humidity)
     console.log(data.current.wind_kph)
     console.log(data.current.precip_in)
@@ -266,9 +269,31 @@ async function weatherAPICall(){
 
 weatherAPICall()
 
-function DateTime(){
+function DateTime() {
+
+    let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+    let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+    var header1Date = document.querySelector('.header1 h2')
+    var header1Time = document.querySelector('.header1 h1')
+
     let date = new Date()
-    console.log(date.getHours())
+
+    var dayOfWeek = days[date.getDay()]
+    var hours = date.getHours()
+    var minutes = date.getMinutes()
+    let ampm = hours >= 12 ? "pm" : "am"
+    hours = hours % 12 || 12
+
+    if (minutes < 10) {
+        minutes = "0" + minutes
+    }
+
+    var currentDate = date.getDate()
+    var month = months[date.getMonth()]
+    var year = date.getFullYear()
+
+    header1Time.innerHTML = `${dayOfWeek}, ${hours}:${minutes} ${ampm}`
+    header1Date.innerHTML = `${currentDate} ${month} ${year}`
 }
 
 DateTime()
