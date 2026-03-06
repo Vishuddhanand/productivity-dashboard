@@ -249,9 +249,18 @@ pomodoroTimer()
 
 
 
+function weatherElement(){
+
 
 
 async function weatherAPICall() {
+
+    let temp = document.querySelector('.temp')
+    let humidity = document.querySelector('.humidity')
+    let wind = document.querySelector('.wind')
+    let precipitation = document.querySelector('.precipitation')
+    let weather = document.querySelector('.weather')
+    let cityLocation = document.querySelector('.header1 h4')
 
     var apiKey = '1b7e61b2a2774d9b820174805260303'
     var city = 'Pune'
@@ -259,12 +268,12 @@ async function weatherAPICall() {
     let response = await fetch(`http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}`)
     let data = await response.json()
 
-    console.log(data.current.humidity)
-    console.log(data.current.wind_kph)
-    console.log(data.current.precip_in)
-    console.log(data.current.temp_c)
-    console.log(data.current.condition.text)
-    console.log(data.location.name)
+    humidity.innerHTML = `Humidity: ${data.current.humidity}%`
+    wind.innerHTML = `Wind: ${data.current.wind_kph} km/h`
+    precipitation.innerHTML = `Precipitation: ${data.current.precip_in}%`
+    temp.innerHTML = `${Math.floor(data.current.temp_c)}°C`
+    weather.innerHTML = `${data.current.condition.text}`
+    cityLocation.innerHTML = `${data.location.name}`
 }
 
 weatherAPICall()
@@ -296,4 +305,9 @@ function DateTime() {
     header1Date.innerHTML = `${currentDate} ${month} ${year}`
 }
 
-DateTime()
+setInterval(DateTime,1000)
+
+}
+
+weatherElement()
+
