@@ -249,65 +249,86 @@ pomodoroTimer()
 
 
 
-function weatherElement(){
+function weatherElement() {
 
 
 
-async function weatherAPICall() {
+    async function weatherAPICall() {
 
-    let temp = document.querySelector('.temp')
-    let humidity = document.querySelector('.humidity')
-    let wind = document.querySelector('.wind')
-    let precipitation = document.querySelector('.precipitation')
-    let weather = document.querySelector('.weather')
-    let cityLocation = document.querySelector('.header1 h4')
+        let temp = document.querySelector('.temp')
+        let humidity = document.querySelector('.humidity')
+        let wind = document.querySelector('.wind')
+        let precipitation = document.querySelector('.precipitation')
+        let weather = document.querySelector('.weather')
+        let cityLocation = document.querySelector('.header1 h4')
 
-    var apiKey = '1b7e61b2a2774d9b820174805260303'
-    var city = 'Pune'
+        var apiKey = '1b7e61b2a2774d9b820174805260303'
+        var city = 'Pune'
 
-    let response = await fetch(`http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}`)
-    let data = await response.json()
+        let response = await fetch(`http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}`)
+        let data = await response.json()
 
-    humidity.innerHTML = `Humidity: ${data.current.humidity}%`
-    wind.innerHTML = `Wind: ${data.current.wind_kph} km/h`
-    precipitation.innerHTML = `Precipitation: ${data.current.precip_in}%`
-    temp.innerHTML = `${Math.floor(data.current.temp_c)}°C`
-    weather.innerHTML = `${data.current.condition.text}`
-    cityLocation.innerHTML = `${data.location.name}`
-}
-
-weatherAPICall()
-
-function DateTime() {
-
-    let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
-    let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
-    var header1Date = document.querySelector('.header1 h2')
-    var header1Time = document.querySelector('.header1 h1')
-
-    let date = new Date()
-
-    var dayOfWeek = days[date.getDay()]
-    var hours = date.getHours()
-    var minutes = date.getMinutes()
-    let ampm = hours >= 12 ? "pm" : "am"
-    hours = hours % 12 || 12
-
-    if (minutes < 10) {
-        minutes = "0" + minutes
+        humidity.innerHTML = `Humidity: ${data.current.humidity}%`
+        wind.innerHTML = `Wind: ${data.current.wind_kph} km/h`
+        precipitation.innerHTML = `Precipitation: ${data.current.precip_in}%`
+        temp.innerHTML = `${Math.floor(data.current.temp_c)}°C`
+        weather.innerHTML = `${data.current.condition.text}`
+        cityLocation.innerHTML = `${data.location.name}`
     }
 
-    var currentDate = date.getDate()
-    var month = months[date.getMonth()]
-    var year = date.getFullYear()
+    weatherAPICall()
 
-    header1Time.innerHTML = `${dayOfWeek}, ${hours}:${minutes} ${ampm}`
-    header1Date.innerHTML = `${currentDate} ${month} ${year}`
-}
+    function DateTime() {
 
-setInterval(DateTime,1000)
+        let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+        let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+        var header1Date = document.querySelector('.header1 h2')
+        var header1Time = document.querySelector('.header1 h1')
+
+        let date = new Date()
+
+        var dayOfWeek = days[date.getDay()]
+        var hours = date.getHours()
+        var minutes = date.getMinutes()
+        let ampm = hours >= 12 ? "pm" : "am"
+        hours = hours % 12 || 12
+
+        if (minutes < 10) {
+            minutes = "0" + minutes
+        }
+
+        var currentDate = date.getDate()
+        var month = months[date.getMonth()]
+        var year = date.getFullYear()
+
+        header1Time.innerHTML = `${dayOfWeek}, ${hours}:${minutes} ${ampm}`
+        header1Date.innerHTML = `${currentDate} ${month} ${year}`
+    }
+
+    setInterval(DateTime, 1000)
 
 }
 
 weatherElement()
 
+
+let chnageThemeBtn = document.querySelector('.theme')
+let root = document.documentElement
+let flag = 0
+
+chnageThemeBtn.addEventListener('click', function () {
+    if (flag == 0) {
+        root.style.setProperty('--pri', '#fff')
+        root.style.setProperty('--sec', '#111')
+        root.style.setProperty('--tri1', 'rgba(255, 87, 87, 0.611)')
+        root.style.setProperty('--tri2', 'rgb(40, 38, 37)')
+        flag = 1
+    } else {
+        root.style.setProperty('--pri', '#111')
+        root.style.setProperty('--sec', '#f5f5f5')
+        root.style.setProperty('--tri1', 'rgba(255, 87, 87, 0.8)')
+        root.style.setProperty('--tri2', '#e0e0e0')
+        flag = 0
+    }
+
+})

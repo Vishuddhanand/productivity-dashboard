@@ -3,6 +3,8 @@
     --sec: #111;
     --tri1: rgba(255, 87, 87, 0.611);
     --tri2: rgb(40, 38, 37);
+    --crimson: crimson;
+    --green: green;
 }
 
 
@@ -11,7 +13,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    color: var(--pri);
+    
 }
 
 html,
@@ -32,10 +34,43 @@ section.allElems {
     background-color: var(--sec);
     padding: 10px 20px;
     position: absolute;
+    color: var(--pri);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: var(--tri2);
+    margin-bottom: 15px;
+    border-radius: 10px;
+    transition: all ease 0.2s;
+    color: var(--pri);
+}
+
+nav h3 {
+    font-weight: 600;
+}
+
+nav .theme {
+    padding: 10px 30px;
+    background-color: var(--crimson);
+    font-weight: 600;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    cursor: pointer;
+    color: var(--pri);
+
+}
+
+.theme:active {
+    scale: 0.98;
 }
 
 .allElems header {
-    height: 350px;
+    height: 300px;
     width: 100%;
     background-image: url('https://images.unsplash.com/photo-1717361281130-f10a587180a2?q=80&w=1169&auto=format&fit=crop');
     background-size: cover;
@@ -46,6 +81,7 @@ section.allElems {
     justify-content: space-between;
     align-items: center;
     color: white;
+    
 }
 
 .header1 h1 {
@@ -86,20 +122,18 @@ section.allElems {
 .allElems .allFeatures {
     display: flex;
     flex-wrap: wrap;
-    gap: 25px;
-    justify-content: center;
-    align-items: center;
-    margin-top: 25px;
+    gap: 26px;
+    margin-top: 20px;
 
 }
 
-
 .elem {
-    height: 355px;
+    height: 310px;
     width: 275px;
     position: relative;
     transition: all ease 0.2s;
     cursor: pointer;
+    color: white;
 }
 
 .elem:active {
@@ -126,11 +160,13 @@ section.allElems {
     position: absolute;
     padding: 10px 20px;
     overflow: hidden;
+    color: white;
 }
 
 .fullElem h2 {
     font-size: 30px;
     padding-block: 10px;
+    color: var(--pri);
 
 }
 
@@ -139,11 +175,12 @@ section.allElems {
     outline: none;
     padding: 5px 15px;
     font-weight: 600;
-    background-color: black;
+    background-color: var(--sec);
     position: absolute;
     right: 2%;
     top: 3%;
     cursor: pointer;
+    color: var(--pri);
 }
 
 .back:active {
@@ -157,6 +194,7 @@ section.allElems {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    color: var(--pri);
 }
 
 .todo-list-full-page .todo-container .addTask {
@@ -187,7 +225,7 @@ section.allElems {
     border-radius: 5px;
     border: none;
     outline: none;
-    color: var(--sec);
+    color: black;
     font-size: 20px;
 
 }
@@ -202,7 +240,7 @@ section.allElems {
     font-size: 15px;
     padding: 10px 20px;
     font-weight: 600;
-    background-color: green;
+    background-color: var(--green);
     border-radius: 5px;
     border: none;
     outline: none;
@@ -247,7 +285,7 @@ section.allElems {
 }
 
 .important-tag.true {
-    background: red;
+    background: var(--crimson);
     color: white;
     padding: 3px 8px;
     font-size: 12px;
@@ -256,6 +294,10 @@ section.allElems {
 
 .important-tag.false {
     display: none;
+}
+
+.task-title{
+    color: black;
 }
 
 .task-desc {
@@ -307,7 +349,7 @@ section.allElems {
     border-radius: 5px;
     border: none;
     outline: none;
-    color: var(--sec);
+    color: black;
 }
 
 
@@ -330,10 +372,10 @@ section.allElems {
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
 }
 
-.quote-heading {
+.quote-container .quote-heading {
     font-size: 22px;
     letter-spacing: 2px;
-    color: #764ba2;
+    color: #6c4594;
     margin-bottom: 20px;
 }
 
@@ -382,6 +424,7 @@ section.allElems {
     padding: 5px 15px;
     margin-top: 15px;
     color: var(--sec);
+    background-color: var(--pri);
     font-size: 20px;
     font-weight: 600;
     border: none;
@@ -391,4 +434,109 @@ section.allElems {
 
 .btn-container button:active {
     scale: 0.97;
+}
+
+.goals-wrapper{
+    height: 80%;
+    width: 100%;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+/* FORM SIDE */
+
+.form-container{
+    width: 35%;
+    height: 100%;
+    background-color: var(--tri2);
+    border-radius: 10px;
+    padding: 30px 20px;
+}
+
+.form-container form{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-container input{
+    padding: 15px;
+    border-radius: 6px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    color: black;
+}
+
+.form-container button{
+    padding: 10px;
+    font-weight: 600;
+    border: none;
+    border-radius: 6px;
+    background-color: var(--green);
+    color: white;
+    cursor: pointer;
+}
+
+.form-container button:active{
+    scale: 0.97;
+}
+
+
+/* GOALS DISPLAY */
+
+.display-goals{
+    width: 60%;
+    height: 100%;
+    background-color: var(--tri2);
+    border-radius: 10px;
+    padding: 20px;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+
+/* Goal Card */
+
+.goal-card{
+    background-color: #f4f4f4;
+    padding: 15px;
+    border-radius: 10px;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    transition: 0.2s;
+}
+
+.goal-card:hover{
+    transform: translateY(-3px);
+}
+
+.goal-card h2{
+    font-size: 18px;
+    color: #111;
+}
+
+.goal-card p{
+    font-size: 14px;
+    color: #555;
+}
+
+.goal-card button{
+    width: fit-content;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--green);
+    color: white;
+    cursor: pointer;
+}
+
+.goal-card button:active{
+    scale: 0.95;
 }
