@@ -13,7 +13,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    
+
 }
 
 html,
@@ -69,6 +69,7 @@ nav .theme {
     scale: 0.98;
 }
 
+
 .allElems header {
     height: 300px;
     width: 100%;
@@ -81,7 +82,7 @@ nav .theme {
     justify-content: space-between;
     align-items: center;
     color: white;
-    
+
 }
 
 .header1 h1 {
@@ -119,6 +120,42 @@ nav .theme {
     margin-top: 6px;
 }
 
+@media (max-width: 600px) {
+
+    .allElems header {
+        height: auto;
+        padding: 20px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    .header1 h1 {
+        font-size: 36px;
+    }
+
+    .header1 h2 {
+        font-size: 22px;
+    }
+
+    .header1 h4 {
+        font-size: 18px;
+    }
+
+    .header2 h2 {
+        font-size: 26px;
+    }
+
+    .header2 h3 {
+        font-size: 14px;
+    }
+
+    .header2 h4 {
+        font-size: 16px;
+    }
+
+}
+
 .allElems .allFeatures {
     display: flex;
     flex-wrap: wrap;
@@ -150,6 +187,33 @@ nav .theme {
     position: absolute;
     bottom: 3%;
     right: 5%;
+}
+
+@media (max-width: 600px) {
+
+    .allElems .allFeatures {
+        justify-content: center;
+        gap: 16px;
+    }
+
+    .elem {
+        width: 100%;
+        height: 80px;
+    }
+
+    .elem h2 {
+        font-size: 18px;
+        bottom: 25%;
+        left: 5%;
+    }
+
+    .elem img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        object-position: bottom;
+    }
+
 }
 
 .fullElem {
@@ -251,6 +315,8 @@ nav .theme {
 }
 
 
+
+
 .allTasks {
     display: flex;
     flex-direction: column;
@@ -296,7 +362,7 @@ nav .theme {
     display: none;
 }
 
-.task-title{
+.task-title {
     color: black;
 }
 
@@ -318,6 +384,65 @@ nav .theme {
     border-radius: 5px;
     background: green;
     color: white;
+}
+
+@media (max-width: 600px) {
+
+    .fullElem {
+        padding: 10px;
+        overflow: auto;
+    }
+
+    .fullElem h2 {
+        font-size: 22px;
+    }
+
+    .back {
+        padding: 4px 12px;
+        font-size: 14px;
+    }
+
+    .todo-list-full-page .todo-container {
+        flex-direction: column;
+        height: auto;
+        gap: 20px;
+    }
+
+    .todo-list-full-page .todo-container .addTask,
+    .todo-list-full-page .todo-container .allTasks {
+        width: 100%;
+        height: auto;
+    }
+
+    .todo-list-full-page .todo-container .addTask form {
+        padding: 20px 15px;
+        gap: 15px;
+    }
+
+    .todo-list-full-page .todo-container .addTask form input,
+    .todo-list-full-page .todo-container .addTask form textarea {
+        padding: 12px;
+        font-size: 16px;
+    }
+
+    .todo-list-full-page .todo-container .addTask form textarea {
+        min-height: 120px;
+        max-height: 200px;
+    }
+
+    .allTasks {
+        padding: 15px;
+        gap: 12px;
+    }
+
+    .task-title {
+        font-size: 16px;
+    }
+
+    .task-desc {
+        font-size: 13px;
+    }
+
 }
 
 
@@ -350,6 +475,26 @@ nav .theme {
     border: none;
     outline: none;
     color: black;
+}
+
+@media (max-width: 600px) {
+
+    .daily-planner-full-page .day-planner {
+        height: auto;
+        padding: 15px;
+        gap: 12px;
+    }
+
+    .day-planner .day-planner-time {
+        width: 100%;
+        padding: 8px;
+    }
+
+    .day-planner .day-planner-time input {
+        width: 100%;
+        padding: 8px;
+    }
+
 }
 
 
@@ -391,6 +536,33 @@ nav .theme {
     font-size: 16px;
     font-weight: 600;
     color: #555;
+}
+
+@media (max-width: 600px) {
+
+    .motivation-wrapper {
+        padding: 15px;
+    }
+
+    .quote-container {
+        padding: 25px 20px;
+        border-radius: 15px;
+    }
+
+    .quote-container .quote-heading {
+        font-size: 18px;
+        letter-spacing: 1px;
+    }
+
+    .quote-text {
+        font-size: 16px;
+        line-height: 1.5;
+    }
+
+    .quote-author {
+        font-size: 14px;
+    }
+
 }
 
 
@@ -436,7 +608,8 @@ nav .theme {
     scale: 0.97;
 }
 
-.goals-wrapper{
+
+.goals-wrapper {
     height: 80%;
     width: 100%;
     margin-top: 20px;
@@ -447,7 +620,7 @@ nav .theme {
 
 /* FORM SIDE */
 
-.form-container{
+.form-container {
     width: 35%;
     height: 100%;
     background-color: var(--tri2);
@@ -455,13 +628,13 @@ nav .theme {
     padding: 30px 20px;
 }
 
-.form-container form{
+.form-container form {
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
 
-.form-container input{
+.form-container input {
     padding: 15px;
     border-radius: 6px;
     border: none;
@@ -470,7 +643,7 @@ nav .theme {
     color: black;
 }
 
-.form-container button{
+.form-container button {
     padding: 10px;
     font-weight: 600;
     border: none;
@@ -480,14 +653,14 @@ nav .theme {
     cursor: pointer;
 }
 
-.form-container button:active{
+.form-container button:active {
     scale: 0.97;
 }
 
 
 /* GOALS DISPLAY */
 
-.display-goals{
+.display-goals {
     width: 60%;
     height: 100%;
     background-color: var(--tri2);
@@ -502,7 +675,7 @@ nav .theme {
 
 /* Goal Card */
 
-.goal-card{
+.goal-card {
     background-color: #f4f4f4;
     padding: 15px;
     border-radius: 10px;
@@ -513,21 +686,21 @@ nav .theme {
     transition: 0.2s;
 }
 
-.goal-card:hover{
+.goal-card:hover {
     transform: translateY(-3px);
 }
 
-.goal-card h2{
+.goal-card h2 {
     font-size: 18px;
     color: #111;
 }
 
-.goal-card p{
+.goal-card p {
     font-size: 14px;
     color: #555;
 }
 
-.goal-card button{
+.goal-card button {
     width: fit-content;
     padding: 6px 12px;
     border: none;
@@ -537,6 +710,6 @@ nav .theme {
     cursor: pointer;
 }
 
-.goal-card button:active{
+.goal-card button:active {
     scale: 0.95;
 }
