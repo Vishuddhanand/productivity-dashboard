@@ -37,7 +37,7 @@ section.allElems {
     color: var(--pri);
 }
 
-.fullElem{
+.fullElem {
     position: fixed;
     inset: 0;
     height: 100dvh;
@@ -701,12 +701,12 @@ nav .theme {
 
 .goal-card h2 {
     font-size: 18px;
-    color: #111;
+    color: black;
 }
 
 .goal-card p {
     font-size: 14px;
-    color: #555;
+    color: black;
 }
 
 .goal-card button {
@@ -717,6 +717,10 @@ nav .theme {
     background-color: var(--green);
     color: white;
     cursor: pointer;
+}
+
+.goal-card .delete-btn {
+    background-color: var(--crimson);
 }
 
 .goal-card button:active {

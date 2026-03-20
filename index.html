@@ -121,25 +121,20 @@
             </div>
         </section>
 
-        <section class="fullElem daily-goals-full-page">
+        <section class="fullElem goals-full-page">
             <button class="back" id="4">Close</button>
-            <h2>Daily Goals</h2>
+            <h2>Goals</h2>
+
             <div class="goals-wrapper">
                 <div class="form-container">
-                    <form>
-                        <input type="text" placeholder="Enter Goal">
-                        <input type="date">
+                    <form id="goalForm">
+                        <input type="text" id="goalInput" placeholder="Enter Goal" required>
+                        <input type="date" id="goalDate" required>
                         <button type="submit">Add Goal</button>
                     </form>
                 </div>
-                <div class="display-goals">
-                    <div class="goal-card">
-                        <h2>Goal Title</h2>
-                        <p>Date</p>
-                        <button>Goal Done</button>
-                    </div>
 
-                </div>
+                <div class="display-goals" id="goalsContainer"></div>
             </div>
         </section>
 

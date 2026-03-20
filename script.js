@@ -312,6 +312,83 @@ function weatherElement() {
 weatherElement()
 
 
+
+function handleGoals() {
+    let form = document.getElementById("goalForm")
+    let goalInput = document.getElementById("goalInput")
+    let goalDate = document.getElementById("goalDate")
+    let goalsContainer = document.getElementById("goalsContainer")
+
+    let goals = JSON.parse(localStorage.getItem("goals")) || []
+
+    function renderGoals() {
+        goalsContainer.innerHTML = ""
+
+        let today = new Date().toISOString().split("T")[0]
+
+        goals.forEach(function (goal, index) {
+            let goalCard = document.createElement("div")
+            goalCard.classList.add("goal-card")
+
+            let isExpired = goal.date < today
+
+            goalCard.innerHTML = `
+                <h2>${goal.text}</h2>
+                <p>${goal.date}</p>
+                <p class="status">
+                    ${goal.done ? "Done ✔" : (isExpired ? "Expired ❌" : "Active ⏳")}
+                </p>
+                <div class="goal-actions">
+                    ${(!goal.done && !isExpired) ? "<button class='done-btn'>Done</button>" : ""}
+                    <button class="delete-btn">Delete</button>
+                </div>
+            `
+
+            let doneBtn = goalCard.querySelector(".done-btn")
+            let deleteBtn = goalCard.querySelector(".delete-btn")
+
+            if (doneBtn) {
+                doneBtn.addEventListener("click", function () {
+                    goals[index].done = true
+                    localStorage.setItem("goals", JSON.stringify(goals))
+                    renderGoals()
+                })
+            }
+
+            deleteBtn.addEventListener("click", function () {
+                goals.splice(index, 1)
+                localStorage.setItem("goals", JSON.stringify(goals))
+                renderGoals()
+            })
+
+            goalsContainer.appendChild(goalCard)
+        })
+    }
+
+    form.addEventListener("submit", function (e) {
+        e.preventDefault()
+
+        let goalText = goalInput.value
+        let dateValue = goalDate.value
+
+        goals.push({
+            text: goalText,
+            date: dateValue,
+            done: false
+        })
+
+        localStorage.setItem("goals", JSON.stringify(goals))
+
+        form.reset()
+        renderGoals()
+    })
+
+    renderGoals()
+}
+
+handleGoals()
+
+
 let chnageThemeBtn = document.querySelector('.theme')
 let root = document.documentElement
 let flag = 0
@@ -332,3 +409,5 @@ chnageThemeBtn.addEventListener('click', function () {
     }
 
 })
+
+
