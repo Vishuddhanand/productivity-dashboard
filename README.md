@@ -5,11 +5,6 @@ This project helps users manage tasks, plan their day, track goals, stay motivat
 
 ---
 
-## 📸 Preview
-
-> Add screenshots here (recommended for GitHub)
-
----
 
 ## ✨ Features
 
